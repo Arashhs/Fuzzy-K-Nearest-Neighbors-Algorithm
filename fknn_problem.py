@@ -1,9 +1,11 @@
 import kcm_clustering
-import fknn
+import fknn_algorithm
 
 min_clusters_num = 2
 max_clusters_num = 10
 m = 2
+k = 10
+num = 20
 
 
 def init(file_name):
@@ -17,17 +19,22 @@ def init(file_name):
 
 def main():
     # initializing points
-    points = init("test3.csv")
+    points = init("test2.csv")
 
     # running KCM algorithm
+    print("\nFirst of all we run KCM to determine the clusters (next step is FkNN)...\n")
     kcm = kcm_clustering.KCM(points, min_clusters_num, max_clusters_num, m)
     kcm.kcm_cluster()
 
     # determining the cluster borders using FkNN (fuzzy k-nearest neighbors) algorithm
+    print("\nKCM finished. Running FkNN...\n")
+    fknn = fknn_algorithm.fknn(k, kcm.points, kcm.centers, kcm.clusters, m, num)
+    fknn.run_fknn()
+    fknn.fknn_plot()
 
 
     # plotting the result
-    kcm.kcm_plot()
+    # kcm.kcm_plot()
 
 
 

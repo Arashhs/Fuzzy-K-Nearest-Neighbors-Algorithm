@@ -10,7 +10,7 @@ class Point:
 
 
 class KCM:
-    def __init__(self, points, min_clusters_num, max_clusters_num, m, convergence_limit=0.005):
+    def __init__(self, points, min_clusters_num, max_clusters_num, m, convergence_limit=0.01):
         self.points = points
         self.min_clusters_num = min_clusters_num
         self.max_clusters_num = max_clusters_num
@@ -202,6 +202,7 @@ class KCM:
             plt.scatter(x_values, y_values, c=colors[i])
         plt.scatter(centers_x, centers_y, c="red", s=40)
         plt.show()
+
 
 
 
