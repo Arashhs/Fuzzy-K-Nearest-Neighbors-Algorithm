@@ -3,7 +3,7 @@ import fknn_algorithm
 
 min_clusters_num = 2
 max_clusters_num = 10
-m = 2
+m = 3
 k = 10
 num = 20
 
@@ -19,7 +19,7 @@ def init(file_name):
 
 def main():
     # initializing points
-    points = init("test2.csv")
+    points = init("sample5.csv")
 
     # running KCM algorithm
     print("\nFirst of all we run KCM to determine the clusters (next step is FkNN)...\n")
@@ -30,6 +30,7 @@ def main():
     print("\nKCM finished. Running FkNN...\n")
     fknn = fknn_algorithm.fknn(k, kcm.points, kcm.centers, kcm.clusters, m, num)
     fknn.run_fknn()
+    print("\nFkNN finished!")
     fknn.fknn_plot()
 
 
